@@ -1,0 +1,142 @@
+import java.util.*;
+public class Main
+{
+    	class Node{
+		    int data;
+		    Node next;
+		    public Node(int d){
+		        data=d;
+		        next=null;
+		    }
+		}
+public Node head=null;
+public void insert(int d)
+{
+    //Scanner s=new Scanner(System.in);
+    Node newz= new Node(d); 
+    if(head==null)
+    {
+        head=newz;
+    }
+    else{
+        newz.next=head;
+        head=newz;
+    }
+    
+}
+public void insEnd(int g)
+{
+    Node temp=new Node(g);
+    if(head==null)
+    {
+        head=temp;
+    }
+    else{
+        Node lst=head;
+        while(lst.next!=null)
+        {
+            lst=lst.next;
+        }
+        lst.next=temp;
+    }
+}
+public void display()
+{
+    if(head==null)
+    {
+        System.out.println("list is empty");
+        
+    }
+    else{
+        Node temp=head;
+        //System.out.println("list is not empty");
+        while(temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+}
+public void inspos(int d,int p)
+{
+    Node nm=new Node(d); 
+  if(head==null && p==0)
+  {
+      head=nm;
+      
+  }
+  else if(head==null && p!=0)
+  {
+      System.out.println("out of range");
+  }
+  else{
+       Node pre=null,present=head;
+      for(int i=1;i<p;i++)
+      {
+        pre=present;//20
+        present=pre.next;//30
+        
+      }
+      pre.next=nm;
+      nm.next=present;
+  }
+  
+}
+public void deletebeg()
+{
+  if(head==null) 
+  {  System.out.println("out of range");
+  }
+  else{
+      Node temp;
+      temp=head;
+      head=head.next;
+      temp=null;
+  }
+}
+public void deleteEnd()
+{
+    if(head==null)
+    {
+    System.out.println("list is empty");    
+    }
+    else{
+        Node h=head;//10 20 30 40
+        while(h.next.next!=null)
+        {
+            h=h.next;//30
+        
+        }
+       Node j=h.next;
+       h.next=null;
+       j=null;
+    }
+}
+public static void main(String[] args) {
+    Main ob=new Main();
+    ob.insert(90);
+    ob.insert(70);
+    ob.insert(100);
+    ob.insert(40);
+    ob.insert(50);
+    
+    ob.display();
+    System.out.println();
+    ob.insEnd(20);
+     ob.display();
+     System.out.println();
+    ob.inspos(80,2);
+    
+    ob.display();
+    System.out.println();
+    ob.deletebeg();
+    ob.display();
+    System.out.println();
+    ob.deleteEnd();
+    ob.display();
+    
+	    
+	
+	}
+}
+
