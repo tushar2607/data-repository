@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class Main {
+	class Node { 
+        int data; 
+        Node prev; 
+        Node next; 
+        Node(int data) 
+        { 
+        	this.data = data;
+        } 
+    } 
+	public Node head = null;
+	
+	public void insNode(int data)
+	{
+		Node newNode = new Node(data);
+		
+		newNode.next = head;
+		newNode.prev = null;
+		
+		if(head != null)
+		{
+			head.prev = newNode;
+		}
+		
+		head = newNode;
+	}
+	
+	public void insNodeAfter(Node preNode, int data)
+	{
+		Node newNode = new Node(data);
+		newNode.next = preNode.next;
+		preNode.next = newNode;
+		newNode.prev = preNode;
+		if(newNode.next != null)
+		{
+			newNode.next.prev = newNode;
+		}
+	}
+	
+	public void display()
+	{
+		Node cur = head;
+		while(cur != null)
+		{
+			System.out.println(cur.data + " ");
+			cur = cur.next;
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+     Main h = new Main();
+		h.insNode(1);
+		h.insNode(2);
+		h.insNode(3);
+		h.insNode(4);
+		h.insNode(5);
+		h.display();
+		Scanner s = new Scanner(System.in);
+		int g = s.nextInt();
+		System.out.println("New Element will be added after node 3: ");
+	    list.insNodeAfter(h.head.next.next,g);
+		h.display();
+	}
+}
