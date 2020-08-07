@@ -1,0 +1,75 @@
+class Main {
+
+	class Node { 
+        int data; 
+        Node prev; 
+        Node next; 
+        Node(int data) 
+        { 
+        	this.data = data;
+        } 
+    } 
+
+	public Node head=null;
+	
+	public void addNode(int data)
+	{
+		Node newNode = new Node(data);
+		newNode.next = head;
+		newNode.prev = null;
+		
+		if(head != null)
+		{
+			head.prev = newNode;
+		}
+		head = newNode;
+	}
+	
+	public void deleteNode(Node g)
+	{
+        if (head == null || g == null) { 
+            return;
+        } 
+  
+        if (head == g) { 
+            head = g.next; 
+        } 
+
+        if (g.next != null) { 
+            g.next.prev = g.prev; 
+        } 
+ 
+        if (g.prev != null) { 
+            g.prev.next = g.next; 
+        } 
+        return;
+	}
+	
+	public void display()
+	{
+		Node current = head;
+		while(current != null)
+		{
+			System.out.println(current.data + " ");
+			current = current.next;
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		Main d = new Main();
+		d.addNode(1);
+		d.addNode(2);
+		d.addNode(3);
+		d.addNode(4);
+		d.addNode(5);
+		d.display();
+		
+	  while(d.head != null) {  
+        d.deleteNode(d.head);  
+            System.out.println("Updated List:");  
+            d.display();  
+	}
+	System.out.print("list is empty");  
+	}
+}
