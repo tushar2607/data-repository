@@ -1,0 +1,55 @@
+class Doublyll {    
+    class Node{  
+        int item;  
+        Node previous;  
+        Node next;  
+   
+        public Node(int item) {  
+            this.item = item;  
+        }  
+    }  
+    Node head, tail = null;  
+    public void insNode(int item) { 
+        Node newNode = new Node(item);  
+        if(head == null) {  
+            head = tail = newNode;  
+            head.previous = null;  
+            tail.next = null;  
+        }  
+        else {  
+            tail.next = newNode;  
+        
+            newNode.previous = tail;  
+              
+            tail = newNode;  
+             
+            tail.next = null;  
+        }  
+    }  
+   
+
+    public void printNodes() {  
+        Node curr = head;  
+        if(head == null) {  
+            System.out.println("Doubly linked list is empty");  
+            return;  
+        }  
+        System.out.println("Nodes of doubly linked list: ");  
+        while(curr != null) {  
+            System.out.print(curr.item + " ");  
+            curr= curr.next;  
+        }  
+    }  
+}
+class Main{
+    public static void main(String[] args) { 
+        Doublyll d_List = new Doublyll();  
+         
+        d_List.insNode(10);  
+        d_List.insNode(20);  
+        d_List.insNode(30);  
+        d_List.insNode(40);  
+        d_List.insNode(50);  
+        d_List.printNodes();  
+    }  
+}  
