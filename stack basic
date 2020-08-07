@@ -1,0 +1,48 @@
+import java.util.*;
+public class Main {
+    int top=-1;
+    int MAX=1000;
+    int a[]=new int[MAX];
+    
+    boolean push(int x)
+    {
+        if(top>=(MAX-1))
+        {
+            System.out.println("Stack overflow");
+        return false;
+            
+        }
+        else
+        {
+               a[++top]=x;
+               System.out.println(x+ " pushed");
+               return true;
+        }
+     
+    }
+    
+   int pop()
+    {
+        if(top<0)
+        {
+            System.out.println("Stack underflow");
+            return 0;
+        }
+        else
+        {
+             int x=a[top--];
+        return x;
+        }
+       
+    }
+    public static void main(String args[]) {
+        Main ob=new Main();
+        ob.push(10);
+        ob.push(20);
+        ob.push(30);
+        ob.pop();
+        System.out.println(ob.pop()+" popped");
+        
+    
+    }
+}
