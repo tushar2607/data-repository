@@ -1,0 +1,73 @@
+class Main {  
+    public class Node{  
+        int data;  
+        Node next;  
+        public Node(int d) {  
+            this.data = d;  
+        }  
+    }  
+      
+    public Node head = null;  
+    public Node tail = null;  
+      
+    public void add(int d){  
+        Node newNode = new Node(d);  
+        if(head == null) {  
+            head = newNode;  
+            tail = newNode;  
+            newNode.next = head;  
+        }  
+        else {  
+            tail.next = newNode;  
+            tail = newNode;  
+            tail.next = head;  
+        }  
+    }  
+      
+    public void deleteNode(int deleteValue) {
+        Node currentNode = head;
+     
+        if (head != null) {
+            if (currentNode.data == deleteValue) {
+                head = head.next;
+                tail.next = head;
+            } else {
+                do {
+                    Node nextNode = currentNode.next;
+                    if (nextNode.data == deleteValue) {
+                        currentNode.next = nextNode.next;
+                        break;
+                    }
+                    currentNode = currentNode.next;
+                } while (currentNode != head);
+            }
+        }
+    }
+    
+    public void display() {  
+        Node current = head;  
+        if(head == null) {  
+            System.out.println("List is empty");  
+        }  
+        else {  
+             do{  
+                System.out.print(" "+ current.data);  
+                current = current.next;  
+            }
+             while(current != head);  
+            System.out.println();  
+        }  
+    }  
+      
+    public static void main(String[] args) {  
+    	Main list = new Main();  
+        list.add(10);  
+        list.add(8);  
+        list.add(1);  
+        list.add(4);  
+        list.display(); 
+          System.out.println("Nodes of the circular linked list after deletion:");  
+        list.deleteNode(8);
+        list.display();
+    }  
+}  
