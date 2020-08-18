@@ -1,0 +1,87 @@
+public class Queue{
+        int data;
+        int front;
+        int rear;
+        int size;
+        int arr[];
+    public Queue(int s)
+    {
+        size=s;
+        arr=new int[size];
+        front=-1;
+        rear=-1;
+    }
+    public void Enqueue(int data)
+    {
+        if(rear==size)
+        {
+            System.out.println("Queue is full");
+        }
+        else{
+            arr[++rear]=data;
+        }
+    }
+    
+    
+    //10 20 40
+    //20 40
+     public void dequeue()
+    {
+     if(front==rear)
+     {
+         System.out.println("Empty");
+     }
+     else{
+         for(int i=0;i<rear;i++)
+         {
+             arr[i]=arr[i+1];
+             
+        }
+         rear--;
+     }
+     
+    }
+     public void Display()
+    {
+      if(rear==front)
+      {
+          System.out.println("underflow");
+      }else{
+          for(int i=0;i<rear+1;i++)
+          {
+              System.out.print(arr[i]+ " ");
+          }
+      }
+    }
+    //Enqueue
+    //Dequeue
+    //Display
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    public static void main(String args[])
+    {
+        Queue q=new Queue(5);
+        q.Enqueue(10);
+          q.Enqueue(20);
+            q.Enqueue(30);
+        q.Display();
+        System.out.println();
+        q.dequeue();
+        q.Display();
+        
+    }
+    
+}
